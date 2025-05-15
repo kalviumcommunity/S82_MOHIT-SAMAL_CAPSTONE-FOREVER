@@ -63,3 +63,8 @@ https://s82-mohit-samal-capstone-forever.onrender.com
 
 ### Repo :- 
 https://github.com/kalviumcommunity/S82_MOHIT-SAMAL_CAPSTONE-FOREVER.git
+
+
+
+### README FRONTEND DEPLOY LINK :-
+https://fluffy-rabanadas-060f03.netlify.app/
