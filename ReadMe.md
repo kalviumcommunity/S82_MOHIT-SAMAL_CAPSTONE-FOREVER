@@ -52,7 +52,7 @@ FOREVER is a full-stack e-commerce web application inspired by platforms like My
 - 🔐 Secure loginsignup via Google OAuth
 - 🧾 Order placement and confirmation
 - 🖼️ Image hosting with Cloudinary
-- 📦 Admin dashboard for addingeditingdeleting products
+- 📦 Admin dashboard for adding editing deleting products
 - 🔔 Toast notifications for user feedback
 
 ---
