@@ -58,9 +58,18 @@ FOREVER is a full-stack e-commerce web application inspired by platforms like My
 ---
 
 
+
+
 ### README FRONTEND DEPLOY LINK :-
 https://fluffy-rabanadas-060f03.netlify.app/
 https://app.netlify.com/projects/reliable-platypus-8e5d67/deploys/682613b35825ef542214aa62
 
+### BACKEND RENDER LINK :- 
+https://s82-mohit-samal-capstone-forever.onrender.com
+
+
+
+
 ### Repo :- 
 https://github.com/kalviumcommunity/S82_MOHIT-SAMAL_CAPSTONE-FOREVER.git
+
