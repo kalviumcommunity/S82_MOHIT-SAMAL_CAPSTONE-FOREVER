@@ -21,9 +21,6 @@ const App = () => {
 
      {/*After login  when we enter refresh it take us to the login page again so to avoid that i used this  useEffect */}
 
-     useEffect(() => {
-       localStorage.setItem('token',token)
-     },[token])
 
 
   return (
