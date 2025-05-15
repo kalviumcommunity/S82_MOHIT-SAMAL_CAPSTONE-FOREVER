@@ -57,6 +57,11 @@ FOREVER is a full-stack e-commerce web application inspired by platforms like My
 
 ---
 
+### Readme
+### React
+### Get
+### Post
+
 
 ### Repo :- 
 https://github.com/kalviumcommunity/S82_MOHIT-SAMAL_CAPSTONE-FOREVER.git
