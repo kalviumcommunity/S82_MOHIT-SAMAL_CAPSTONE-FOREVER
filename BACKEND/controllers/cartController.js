@@ -4,14 +4,14 @@ const userModel = require("../models/userModel");
 
 const addToCart = async (req, res) => {
     try {
-        const { itemId, size } = req.body;
+        const { itemId, size,name } = req.body;
         const userId = req.userId; // ✅ from middleware
 
         const userData = await userModel.findById(userId);
         let cartData = await userData.cartData || {}; // in case it's undefined
 
         if (cartData[itemId]) {
-            if (cartData[itemId][size]) {
+            if (cartData[itemId][size] ) {
                 cartData[itemId][size] += 1;
             } else {
                 cartData[itemId][size] = 1;
