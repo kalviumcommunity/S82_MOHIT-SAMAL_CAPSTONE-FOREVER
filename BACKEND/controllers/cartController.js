@@ -4,7 +4,7 @@ const userModel = require("../models/userModel");
 
 const addToCart = async (req, res) => {
     try {
-        const { itemId, size,name } = req.body;
+        const { itemId, size} = req.body;
         const userId = req.userId; // ✅ from middleware
 
         const userData = await userModel.findById(userId);
