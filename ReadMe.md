@@ -57,6 +57,9 @@ FOREVER is a full-stack e-commerce web application inspired by platforms like My
 
 ---
 
+### BACKEND RENDER LINK :- 
+https://s82-mohit-samal-capstone-forever.onrender.com
+
 
 ### Repo :- 
 https://github.com/kalviumcommunity/S82_MOHIT-SAMAL_CAPSTONE-FOREVER.git
