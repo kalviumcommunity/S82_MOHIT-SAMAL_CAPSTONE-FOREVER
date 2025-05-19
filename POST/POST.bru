@@ -1,0 +1,26 @@
+meta {
+  name: POST
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost/api/product/add
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Mohit",
+    "description": "Nice",
+    "price": 99999999999,
+    "category": "Men",
+    "subCategory": "TopWear",
+    "bestSeller": true,
+    "sizes": ["XL"],
+    "image": "image1",
+    "date": "2025-11-14"
+  }
+  
+}
