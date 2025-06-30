@@ -13,6 +13,21 @@ const ShopContextProvider = (props) => {
     const currency = '$';
     const delivery_fee = 50;
 
+//     //------------optional
+//     export function formatPriceINR(price) {
+//   if (!price) return "₹0";
+//   return "₹" + Number(price).toLocaleString("en-IN");
+// }
+// 📄 Use it inside a product card or order list:
+
+// jsx
+// Copy
+// Edit
+// import { formatPriceINR } from "../utils/formatPrice";
+
+// <span>{formatPriceINR(product.price)}</span>
+    //------------optional
+
     const backendurl = import.meta.env.VITE_BACKEND_URL
 
     const [search,Setsearch] = useState('');
@@ -124,7 +139,7 @@ if (token) {
     const getProductsData = async() => {
         try {
 
-            const response = await axios.get('http://localhost:9999/api/product/list');
+            const response = await axios.get('http://localhost:9999/api/product/list')
 
             if (response.data.success) {
                 Setproducts(response.data.products)

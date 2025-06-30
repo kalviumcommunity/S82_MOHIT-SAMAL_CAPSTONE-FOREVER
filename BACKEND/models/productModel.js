@@ -37,6 +37,16 @@ const productSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  lastUpdated: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// Automatically update 'lastUpdated' before saving
+productSchema.pre('save', function (next) {
+  this.lastUpdated = new Date();
+  next();
 });
 
 module.exports = mongoose.model('Product', productSchema);

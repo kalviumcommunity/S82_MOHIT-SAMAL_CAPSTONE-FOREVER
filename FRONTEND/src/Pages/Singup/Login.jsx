@@ -14,6 +14,13 @@ const Login = () => {
   const [password, Setpassword] = useState('');
   const [email, Setemail] = useState('');
 
+  const [loading, setLoading] = useState(false);
+
+  const handleGoogleLogin = () => {
+    setLoading(true);
+    window.location.href = "http://localhost:9999/auth/google";
+  };
+
    {/*When we Submit the Fields in the login or Sign up it do refresh when we do Siun up or Something */}
     {/*So to prevent that we create a Submit Handler */}
   const onSubmitHandler = async (e) => {
@@ -111,6 +118,15 @@ const Login = () => {
         <button className='bg-black text-white font-light px-8 py-2 mt-4 hover:bg-gray-700  '>
           {currentState === 'Login' ? 'Sign In' : 'Sign Up'}
         </button>
+            <div className="flex flex-col items-center justify-center mt-20">
+      <button
+        onClick={handleGoogleLogin}
+        className="bg-red-500 text-white px-4 py-2 rounded"
+      >
+        {loading ? "Signing in..." : "Sign in with Google"}
+      </button>
+    </div>
+
       </form>
     </div>
   );
