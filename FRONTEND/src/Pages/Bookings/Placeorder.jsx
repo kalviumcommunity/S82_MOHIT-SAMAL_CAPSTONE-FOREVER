@@ -118,27 +118,29 @@ if (method === "razorpay") {
   handleRazorpayPayment();
   return;
 }
+
 if (method === "stripe") {
   const res = await fetch("http://localhost:9999/api/payment/create-stripe-session", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       cartItems,
       successUrl: "http://localhost:5173/DisplayOrders",
-      cancelUrl: "http://localhost:5173/placeorder"
-    })
+      cancelUrl: "http://localhost:5173/placeorder",
+    }),
   });
 
   const data = await res.json();
+  if (!data.url) {
+    alert("Stripe session URL not received!");
+    return;
+  }
+
   window.location.href = data.url;
   return;
 }
-  console.log("Submit handler triggered");
-
-
-
 
       
     } catch (error) {
