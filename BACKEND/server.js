@@ -57,7 +57,7 @@ app.use("/api/product",productRouter);
 
 app.use("/api/cart",cartRouter);
 
-app.use('/api/payment', require('./routes/paymentRoutes'));
+app.use('/api/payment', require('./routes/paymentRoutes.js'));
 
 app.use("/api/order",orderRouter)
 

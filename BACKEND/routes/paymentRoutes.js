@@ -1,11 +1,11 @@
-const express = require('express');
-const Razorpay = require('razorpay');
+const express = require("express");
 const router = express.Router();
-require('dotenv').config();
+const Stripe = require("stripe");
+require("dotenv").config();
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
-router.post('/create-stripe-session', async (req, res) => {
+router.post("/create-stripe-session", async (req, res) => {
   const { cartItems, successUrl, cancelUrl } = req.body;
 
   try {
@@ -17,11 +17,11 @@ router.post('/create-stripe-session', async (req, res) => {
         if (quantity > 0) {
           line_items.push({
             price_data: {
-              currency: 'inr',
+              currency: "inr",
               product_data: {
                 name: `Product: ${productId} | Size: ${size}`,
               },
-              unit_amount: 50000, // in paise => ₹500. You can customize this.
+              unit_amount: 50000, // ₹500 (in paise)
             },
             quantity,
           });
@@ -30,38 +30,17 @@ router.post('/create-stripe-session', async (req, res) => {
     }
 
     const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      mode: 'payment',
+      payment_method_types: ["card"],
+      mode: "payment",
       line_items,
       success_url: successUrl,
       cancel_url: cancelUrl,
     });
 
-    res.json({ url: session.url });
+    return res.status(200).json({ url: session.url });
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
-
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
-
-router.post('/create-order', async (req, res) => {
-  const { amount, currency = "INR" } = req.body;
-
-  const options = {
-    amount: amount * 100, // amount in paise
-    currency,
-    receipt: `receipt_order_${Date.now()}`
-  };
-
-  try {
-    const order = await razorpay.orders.create(options);
-    res.status(200).json(order);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Stripe Error:", error.message);
+    return res.status(500).json({ error: error.message });
   }
 });
 
