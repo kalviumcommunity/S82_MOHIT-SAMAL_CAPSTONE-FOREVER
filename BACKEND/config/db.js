@@ -1,3 +1,5 @@
+console.log("🧠 DB.js loaded at", new Date().toISOString());
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
