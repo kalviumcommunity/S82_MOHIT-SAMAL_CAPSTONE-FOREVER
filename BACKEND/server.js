@@ -43,10 +43,6 @@ const cartRouter = require('./routes/cartRoutes.js');
 const orderRouter = require('./routes/orderRoute.js');
 
 
-
-
-
-
 // Middleware
 app.use(cors());
 app.use(express.json());

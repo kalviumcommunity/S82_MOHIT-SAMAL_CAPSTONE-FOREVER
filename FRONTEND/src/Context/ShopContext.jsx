@@ -66,7 +66,7 @@ const ShopContextProvider = (props) => {
 if (token) {
   try {
     await axios.post(
-      'http://localhost:9999/api/cart/add',
+      'https://forever-8ecp.onrender.com/api/cart/add',
       { itemId, size },
       { headers: { token } }
     );
@@ -107,7 +107,7 @@ if (token) {
 
         if(token){
             try {
-                await axios.post('http://localhost:9999/api/cart/update',{itemId,size,quantity},{headers:{token}})
+                await axios.post('https://forever-8ecp.onrender.com/api/cart/update',{itemId,size,quantity},{headers:{token}})
             } catch (error) {
                 console.log(error);
                 toast.error(error.message)
@@ -139,7 +139,7 @@ if (token) {
     const getProductsData = async() => {
         try {
 
-            const response = await axios.get('http://localhost:9999/api/product/list')
+            const response = await axios.get('https://forever-8ecp.onrender.com/api/product')
 
             if (response.data.success) {
                 Setproducts(response.data.products)
@@ -159,21 +159,22 @@ if (token) {
 
     const getUserCart = async(token) => {
         try {
-            const response = await axios.post('http://localhost:9999/api/cart/update',{headers:{token}})
+            const response = await axios.post('https://forever-8ecp.onrender.com/api/cart/get', {}, {
+                headers: { token }
+            });
 
             if(response.data.success){
                 SetcartItems(response.data.cartData)
             }
         } catch (error) {
-            
-    console.log(error);
-    toast.error(error.message)
+            console.log(error);
+            toast.error(error.message)
         }
     }
     // Now to run this function whenever the website is refreshed in The useEffect
     useEffect(() => {
         getProductsData();
-    },[products])
+    }, [token])
 
 
 
