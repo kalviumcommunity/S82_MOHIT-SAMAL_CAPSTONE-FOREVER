@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+
 
 
 /* For that underline below every section to show where we are*/
 a.active hr{
     display: block;
 }
+
 
 *{
     font-family: outfit;
@@ -20,9 +20,11 @@ a.active hr{
 }
 
 /*To Hide the side image scroll in the produt page*/
+
 ::-webkit-scrollbar{
     display: none;
 }
+
 
  @media (max-width:640px) {
     a.active{

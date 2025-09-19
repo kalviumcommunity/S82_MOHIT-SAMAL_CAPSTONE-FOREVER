@@ -8,7 +8,7 @@ import { useState } from 'react'
 import { ShopContext } from '../../Context/ShopContext'
 
 const Placeorder = () => {
-  const {navigate,token,cartItems,SetcartItems,getCartAmount,delivery_fee,products} = useContext(ShopContext);
+  const {navigate,cartItems,SetcartItems,getCartAmount,delivery_fee,products} = useContext(ShopContext);
   
   const [method,setMethod] = useState('cod');
   //to save the order details in the DB through COD
@@ -57,7 +57,7 @@ const handleRazorpayPayment = async () => {
     return;
   }
 
-  const orderRes = await fetch("http://localhost:9999/api/payment/create-order", {
+  const orderRes = await fetch("https://forever-8ecp.onrender.com/api/payment/create-order", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -120,15 +120,15 @@ if (method === "razorpay") {
 }
 
 if (method === "stripe") {
-  const res = await fetch("http://localhost:9999/api/payment/create-stripe-session", {
+  const res = await fetch("https://forever-8ecp.onrender.com/api/payment/create-stripe-session", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
       cartItems,
-      successUrl: "http://localhost:5173/DisplayOrders",
-      cancelUrl: "http://localhost:5173/placeorder",
+      successUrl: "https://forever-8ecp.onrender.com/DisplayOrders",
+      cancelUrl: "https://forever-8ecp.onrender.com/placeorder",
     }),
   });
 

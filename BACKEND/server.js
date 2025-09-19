@@ -26,7 +26,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] }));
+  passport.authenticate('google', { scope: ['profile', 'email'], prompt: 'select_account' })
+);
 
 app.get('/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/' }),
@@ -41,10 +42,15 @@ const userRoutes = require('./routes/UserRoutes.js')
 const productRouter = require('./routes/productRoutes.js')
 const cartRouter = require('./routes/cartRoutes.js');
 const orderRouter = require('./routes/orderRoute.js');
+const payment = require('./routes/paymentRoutes.js');
 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: "https://foreverin.netlify.app", // ya specific Netlify domain
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes (we’ll add these later)
@@ -53,7 +59,7 @@ app.use("/api/product",productRouter);
 
 app.use("/api/cart",cartRouter);
 
-app.use('/api/payment', require('./routes/paymentRoutes.js'));
+app.use('/api/payment', payment);
 
 app.use("/api/order",orderRouter)
 
