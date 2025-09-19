@@ -1,3 +1,30 @@
+// Get user profile
+const getProfile = async (req, res) => {
+  try {
+    const user = await UserSchema.findById(req.userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
+
+// Update user profile
+const updateProfile = async (req, res) => {
+  try {
+    const user = await UserSchema.findByIdAndUpdate(req.userId, req.body, { new: true });
+    if (!user) {
+      return res.status(404).json({ success: false, message: "User not found" });
+    }
+    res.json({ success: true, user });
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 // Logic to allow User to Create or Login in the website
 
 const UserSchema = require('../models/userModel.js');
@@ -141,4 +168,4 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { loginUser, registerUser, Adminlogin };
+module.exports = { loginUser, registerUser, Adminlogin, getProfile, updateProfile };

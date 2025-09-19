@@ -68,8 +68,14 @@ const allorders = async(req,res) => {
 
 //User Order Data for frontend
 const userOrders = async(req,res) => {
-
-
+    try {
+        const userId = req.userId;
+        const orders = await orderModel.find({ user: userId }).sort({ Date: -1 });
+        return res.status(200).json({ success: true, orders });
+    } catch (error) {
+        console.log(error);
+        return res.status(400).json({ success: false, message: error.message });
+    }
 }
 
 

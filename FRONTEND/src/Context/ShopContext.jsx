@@ -174,7 +174,7 @@ if (token) {
     // Now to run this function whenever the website is refreshed in The useEffect
     useEffect(() => {
         getProductsData();
-    }, [token])
+    }, [])
 
 
 
@@ -184,7 +184,7 @@ if (token) {
             SetToken(localStorage.getItem('token'))
             getUserCart(localStorage.getItem('token'))
         }
-    },[])
+    },[token])
 
 
     const value = {
